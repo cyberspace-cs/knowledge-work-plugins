@@ -10,7 +10,7 @@ Each plugin bundles the skills, connectors, slash commands, and sub-agents for a
 
 ## Plugin Marketplace
 
-We're open-sourcing 11 plugins built and inspired by our own work:
+We're open-sourcing 17 plugins built and inspired by our own work:
 
 | Plugin | How it helps | Connectors |
 |--------|-------------|------------|
@@ -24,9 +24,18 @@ We're open-sourcing 11 plugins built and inspired by our own work:
 | **[data](./data)** | Query, visualize, and interpret datasets — write SQL, run statistical analysis, build dashboards, and validate your work before sharing. | Snowflake, Databricks, BigQuery, Definite, Hex, Amplitude, Jira |
 | **[enterprise-search](./enterprise-search)** | Find anything across email, chat, docs, and wikis — one query across all your company's tools. | Slack, Notion, Guru, Jira, Asana, Microsoft 365 |
 | **[bio-research](./bio-research)** | Connect to preclinical research tools and databases (literature search, genomics analysis, target prioritization) to accelerate early-stage life sciences R&D. | PubMed, BioRender, bioRxiv, ClinicalTrials.gov, ChEMBL, Synapse, Wiley, Owkin, Open Targets, Benchling |
+| **[engineering](./engineering)** | Run engineering workflows — standups, code review, architecture decisions, incident response, technical documentation, and hardening the runtime an autonomous agent executes inside. | Slack, Linear, Asana, Jira, Notion, GitHub, PagerDuty, Datadog, Microsoft 365 |
+| **[design](./design)** | Move from exploration to pixel-perfect specs — design critique, design system management, UX writing, accessibility audits, research synthesis, and dev handoff. | Slack, Figma, Linear, Asana, Jira, Notion, Intercom, Microsoft 365 |
+| **[human-resources](./human-resources)** | Run people operations — recruiting, onboarding, performance reviews, compensation analysis, and policy guidance, with compliance kept in view. | Slack, Notion, Jira, Microsoft 365 |
+| **[operations](./operations)** | Optimize business operations — vendor management, process documentation, change management, capacity planning, and compliance tracking. | Slack, Asana, Notion, Jira, Microsoft 365 |
+| **[small-business](./small-business)** | Pre-built small business workflows — invoicing, bookkeeping, payroll, and customer follow-up. You approve every step that touches money or customers. | Stripe, Square, PayPal, QuickBooks, Xero, Gusto, Shopify, HubSpot, Canva, DocuSign, Slack, Gmail, Google Drive, Notion, Zapier, Zoom |
+| **[pdf-viewer](./pdf-viewer)** | View, annotate, and sign PDFs in a live interactive viewer — mark up contracts, fill forms, stamp approvals, and place signatures. | PDF |
 | **[cowork-plugin-management](./cowork-plugin-management)** | Create new plugins or customize existing ones for your organization's specific tools and workflows. | — |
 
 Install these directly from Cowork, browse the full collection here on GitHub, or build your own.
+The same repository also hosts [partner-built plugins](./partner-built) from third-party
+vendors; all of them, first-party and partner, are listed in
+[`.claude-plugin/marketplace.json`](./.claude-plugin/marketplace.json).
 
 ## Getting Started
 

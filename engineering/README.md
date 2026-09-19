@@ -35,6 +35,7 @@ Domain knowledge Claude uses automatically when relevant:
 | `tech-debt` | Identify, categorize, and prioritize technical debt — build a remediation plan |
 | `testing-strategy` | Design test strategies — unit, integration, e2e coverage, test plan creation |
 | `documentation` | Write and maintain technical documentation — READMEs, API docs, runbooks, onboarding guides |
+| `agent-runtime-boundaries` | Harden the runtime a coding agent executes inside — filesystem containment, credential scrubbing, egress allow-lists, process limits, tamper-evident audit, and the negative probes that prove each one |
 
 ## Example Workflows
 
@@ -86,6 +87,20 @@ Start an incident workflow: triage severity, draft communications, track timelin
 
 Get a customized deployment checklist based on your service and what's changing.
 
+### Hardening an Agent's Runtime
+
+```
+/agent-runtime-boundaries ~/work/payments-api
+```
+
+Find out what an autonomous agent can actually reach while it runs in that repo: which
+credential files are in range, which variables survive into the child process, which hosts are
+reachable, what the repo itself executes on clone/install/build, and what the audit trail can
+and cannot prove. You get a boundary-by-boundary table, a recommended sandbox tier with the
+honest statement of what that tier does *not* enforce, negative probes for each claim, the
+approval gates that should be enforced outside the agent's reach, and the residual risk that
+remains after the work.
+
 ## Standalone + Supercharged
 
 Every command and skill works without any integrations:
@@ -98,6 +113,7 @@ Every command and skill works without any integrations:
 | Architecture decisions | Describe the system | Knowledge base (find prior ADRs) |
 | Incident response | Describe the incident | Monitoring, Incident management, Chat |
 | Deploy checklists | Describe the deploy | CI/CD, Source control |
+| Agent runtime hardening | Name the repo and the asset you are worried about | Source control (read hooks, CI, devcontainer), Secrets manager |
 
 ## MCP Integrations
 

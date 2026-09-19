@@ -1,0 +1,52 @@
+name: Check Docs Consistency
+
+# Keeps the landing page and the manifests honest about each other.
+#
+# The failure this guards against is not hypothetical: README.md said
+# "We're open-sourcing 11 plugins" and linked 11 of them while 17 first-party
+# plugins shipped in the repo, which made six of them undiscoverable from the
+# repository landing page. Nothing failed, because nothing was checking.
+#
+# Five invariants (see verify_docs_consistency.py for the full list):
+#   - the plugin count in README.md equals the number of plugin directories
+#   - every first-party plugin is linked from the README marketplace table
+#   - marketplace.json is valid JSON and lists every first-party plugin
+#   - every plugin.json has a name and a version
+#   - every skills/*/SKILL.md has name + description frontmatter
+#   - every relative Markdown link resolves
+#
+# Pure stdlib Python, no install step: this repo ships markdown and JSON and
+# nothing else, so the check should not introduce a toolchain.
+
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - '.claude-plugin/marketplace.json'
+      - '**/.claude-plugin/plugin.json'
+      - '**/skills/**/SKILL.md'
+      - '**/README.md'
+      - 'verify_docs_consistency.py'
+      - '.github/workflows/check-docs-consistency.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - '.claude-plugin/marketplace.json'
+      - '**/.claude-plugin/plugin.json'
+      - '**/skills/**/SKILL.md'
+      - '**/README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify README and manifests agree
+        run: python3 verify_docs_consistency.py
